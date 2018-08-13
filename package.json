@@ -1,0 +1,35 @@
+{
+  "name": "webpack_hw",
+  "version": "1.0.0",
+  "description": "1. Add preprocessor - Sass / Less 2. Add postprocessor - Postcss (at least autoprefixer) 3. Add a hash in the file names (bundle and styles) 4. Change ExtractTextPlugin to MiniCssExtractPlugin",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run clean && webpack --mode production",
+    "dev": "webpack-dev-server --mode development",
+    "clean": "rimraf ./dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anncaly/webpack_hw.git"
+  },
+  "author": "Ann Caly",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anncaly/webpack_hw/issues"
+  },
+  "homepage": "https://github.com/anncaly/webpack_hw#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "css-loader": "^1.0.0",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "html-webpack-plugin": "^3.2.0",
+    "rimraf": "^2.6.2",
+    "style-loader": "^0.22.1",
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5"
+  }
+}
