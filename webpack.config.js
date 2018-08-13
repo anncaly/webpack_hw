@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
 	entry: {
@@ -8,7 +9,7 @@ module.exports = {
 	},
 	output: {
 		path: path.resolve(__dirname, 'dist'),
-		filename: 'bundle.js'
+		filename: 'bundle.[chunkhash].js',
 	},
 	module: {
 		rules: [
@@ -18,20 +19,21 @@ module.exports = {
 				loader: 'babel-loader'
 			},
 			{
-				test: /\.css/,
-				loader: ExtractTextPlugin.extract({
-					fallback: 'style-loader',
-					// first right then left
-					use: ['css-loader']
-					//loaders: ['css-loader', 'sass-loader', 'postcss-loader']
-				})
-			}
-		]
+        test: /\.s?[ac]ss$/,
+        use: [
+        	MiniCssExtractPlugin.loader, 
+        	'css-loader', 
+        	'sass-loader', 
+        	'postcss-loader'
+        ],
+    	},
+    ]
 	},
 	plugins: [
-		new ExtractTextPlugin({
-			filename: 'main.css',
-		}),
+		new MiniCssExtractPlugin({
+			filename: "[name].[chunkhash].css",
+      //chunkFilename: "[id].css"
+    }),
 		new HtmlWebpackPlugin({
 			template: path.resolve(__dirname, 'src', 'index.html'),
 			filename: 'index.html',
